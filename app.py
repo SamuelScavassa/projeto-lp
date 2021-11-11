@@ -24,6 +24,15 @@ def save():
 
     return redirect('https://5000-brown-lemur-kiu2j61j.ws-us18.gitpod.io/')
 
+@app.route('/busca', methods=['POST'])
+def pes():
+    resultado = request.form['pesquisa']
+    for i in tarefas:
+        if resultado in i['texto']:
+            return render_template('busca.html', lista2=i)
+        else:
+            return render_template('erro.html')
+        
 app.run(debug=True)
 
 
