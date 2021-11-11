@@ -6,6 +6,7 @@ tarefas = [
     {"texto": "Estudar para a prova", "concluida": False},
     {"texto": "Passear com o cachorro", "concluida": True},
     {"texto": "Estudar mais para a prova", "concluida": False},
+    {"texto": "Estudar para a prova", "concluida": True},
 ]
 
 @app.route('/')
@@ -18,23 +19,32 @@ def create():
 
 @app.route('/save', methods=['POST'])  # <form action="/save" method="POST">
 def save():
-    texto = request.form['texto']      # <input name="texto"/>
-    tarefa = { "texto": texto, "concluida": False }
+    texto = request.form['texto']  
+    status = request.form['status']    # <input name="texto"/>
+    tarefa = { "texto": texto, "concluida": status }
     tarefas.append(tarefa)
 
-    return redirect('https://5000-brown-lemur-kiu2j61j.ws-us18.gitpod.io/')
+    return redirect('https://5000-cyan-pig-k8e57iy3.ws-us18.gitpod.io/')
 
 @app.route('/busca', methods=['POST'])
 def pes():
+    result = []
     resultado = request.form['pesquisa']
     for i in tarefas:
-        if resultado in i['texto']:
-            return render_template('busca.html', lista2=i)
-        else:
-            return render_template('erro.html')
+        if resultado in i['texto']:            
+            result.append(i)     
+
+    if not result:
+        return render_template('erro.html')
+
+    return render_template('busca.html', lista2=result)  
+
+
+
         
 app.run(debug=True)
 
 
-# Implementar o DELETE!! (2,0 pontos)
+# Implementar o DELETE!! (2,0 pontos)   
 # Implementar uma pesquisa (3,0 pontos)
+
