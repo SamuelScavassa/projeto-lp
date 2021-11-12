@@ -24,7 +24,7 @@ def save():
     tarefa = { "texto": texto, "concluida": status }
     tarefas.append(tarefa)
 
-    return redirect('https://5000-cyan-pig-k8e57iy3.ws-us18.gitpod.io/')
+    return render_template('index.html', lista=tarefas)
 
 @app.route('/busca', methods=['POST'])
 def pes():
@@ -39,7 +39,26 @@ def pes():
 
     return render_template('busca.html', lista2=result)  
 
+@app.route('/deletar', methods=['POST'])
+def delete():
+    item_deletar = request.form['deletar']
+    cont = 0
+    for i in tarefas:
+        if item_deletar == i['texto']:       
+            tarefas.remove(i)
+            return render_template('index.html', lista=tarefas)
+            
+    
+    
+    return render_template('erro.html')
 
+    
+    
+    
+
+@app.route('/gerar')
+def gerador():
+    return render_template('delete.html')
 
         
 app.run(debug=True)
