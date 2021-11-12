@@ -20,12 +20,18 @@
     </div>
     <div class="container">
 
-        <h2>Lista de Tarefas</h2>
+        <h2>Carros a venda</h2>
 
         <table class="table table-hover">
+            <tr>
+                <td><h4>Nome do carro</h4></td>
+                <td><h4>Valor</h4></td>
+
+            </tr>
 
             {% for tarefa in lista: %}
             <tr>
+
                 <td>{{ tarefa['texto'] }}</td>
                 <td>{{ tarefa['concluida'] }} </td>
             </tr>
@@ -34,8 +40,10 @@
         </table>
 
         <a href="/create" class="btn btn-primary">Adicionar</a>
+
+        <a href="/gerar" class="btn btn-primary">Deletar</a>
     </div>
 
-    <a href="/gerar" class="btn btn-primary">DELETAR</a>
+    
 </body>
 </html>

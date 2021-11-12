@@ -3,10 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 tarefas = [
-    {"texto": "Estudar para a prova", "concluida": False},
-    {"texto": "Passear com o cachorro", "concluida": True},
-    {"texto": "Estudar mais para a prova", "concluida": False},
-    {"texto": "Estudar para a prova", "concluida": True},
+    {"texto": "Camaro 2012", "concluida": "R$ 80.000,00"},
+    {"texto": "Uno 1994", "concluida": "R$ 12.000,00"},
+    {"texto": "Nissan Skyline 1992", "concluida": "R$ 120.000,00"},
+    {"texto": "Ferrari Roma 2022", "concluida": "R$ 3.300.000,00"},
 ]
 
 @app.route('/')
