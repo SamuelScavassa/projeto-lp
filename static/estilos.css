@@ -1,0 +1,23 @@
+
+.erro{
+    margin: 20px;
+    color:red;
+}
+
+h2{
+    margin-bottom: 20px;
+    text-align: center;  
+    color: greenyellow; 
+}
+h3{
+    color:red;
+}
+
+body{
+    background-color: #7bd3f7;
+}
+
+.center{
+
+    text-align: center;
+}

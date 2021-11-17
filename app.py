@@ -5,8 +5,8 @@ app = Flask(__name__)
 tarefas = [
     {"texto": "Camaro 2012", "concluida": "R$ 80.000,00"},
     {"texto": "Uno 1994", "concluida": "R$ 12.000,00"},
-    {"texto": "Nissan Skyline 1992", "concluida": "R$ 120.000,00"},
-    {"texto": "Ferrari Roma 2022", "concluida": "R$ 3.300.000,00"},
+    {"texto": "Nissan Skyline 1995", "concluida": "R$ 120.000,00"},
+    {"texto": "Ferrari Roma 2021", "concluida": "R$ 3.300.000,00"},
 ]
 
 @app.route('/')
@@ -19,19 +19,24 @@ def create():
 
 @app.route('/save', methods=['POST'])  # <form action="/save" method="POST">
 def save():
-    texto = request.form['texto']  
+    texto = request.form['texto'] 
+    if texto == "":
+        return render_template('erro.html') 
     status = request.form['status']    # <input name="texto"/>
     tarefa = { "texto": texto, "concluida": status }
     tarefas.append(tarefa)
-
+    
     return render_template('index.html', lista=tarefas)
 
 @app.route('/busca', methods=['POST'])
 def pes():
     result = []
     resultado = request.form['pesquisa']
+    resultado = resultado.lower()
+    if resultado == "":
+        return render_template('erro.html') 
     for i in tarefas:
-        if resultado in i['texto']:            
+        if resultado in i['texto'].lower():            
             result.append(i)     
 
     if not result:
@@ -66,4 +71,6 @@ app.run(debug=True)
 
 # Implementar o DELETE!! (2,0 pontos)   
 # Implementar uma pesquisa (3,0 pontos)
-
+# liapoa
+# Salve mano
+# Salveeee 
