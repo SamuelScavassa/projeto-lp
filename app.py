@@ -50,7 +50,6 @@ def pes():
 @app.route('/deletar', methods=['POST'])
 def delete():
     item_deletar = request.form['deletar']
-    cont = 0
     for i in tarefas:
         if item_deletar == i['texto']:       
             tarefas.remove(i)
